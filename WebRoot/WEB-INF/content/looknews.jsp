@@ -29,19 +29,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    text-align:center;
 	    padding:5px;
 	}
-	#nav {
-	    line-height:30px;
-	    background-color:#eeeeee;
-	    height:300px;
-	    width:100px;
-	    float:left;
-	    padding:5px;	      
-	}
+
 	#section {
-	    
-	    
-	    padding:10px;	 	 
+		word-wrap:break-word; 
 	}
+	
 	#footer {
 	    background-color:black;
 	    color:white;
@@ -67,9 +59,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div id="section">
     <font style=" text-align:left">
 	<h5><s:property value="%{news.author}"/> - <s:property value="%{news.date}"/></h5></font><hr />
-	<pre>
-<s:property value="%{news.content}"/>
-    </pre>
+	<s:iterator value="%{news.content.split('\n')}" var="p">
+		<p><s:property value="#p"/></p>
+	</s:iterator>
+	<%-- <pre><s:property  value="%{news.content.split('\n')}"/></pre> --%>
 	</div>
 	
 	<div id="footer">

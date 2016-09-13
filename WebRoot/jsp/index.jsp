@@ -22,7 +22,8 @@
 	    padding:5px;	      
 	}
 	#section {
-	    width:350px;
+	 
+	    overflow:auto;
 	    float:left;
 	    padding:10px;	 	 
 	}
@@ -44,7 +45,7 @@
 	
 	<s:iterator value="%{columns}" var="c">
 	
-		<a href="/myweb/get-news?column.name=<s:property value="%{#c.name}"/>"><s:property value="%{#c.name}"/></a><br>
+		<a href="/myweb/get-news?column.name=<s:property value="%{#c.name}"/>"><s:property value="%{#c.otherName}"/></a><br>
 	</s:iterator>
 <!-- 	<a href="/myweb/get-news?column.name=test">test</a><br>
 	<a href="/myweb/get-news?column.name=sports">sports</a><br> -->
@@ -60,7 +61,8 @@
 	<s:else>
 		
 	</s:else>
-	<h3><s:property value="column.name"/></h3>
+	<!-- 资讯列表  -->
+	<h3><s:property value="column.otherName"/></h3>
 		<ol>
 			<s:iterator  value="%{newsList}" var="news">
 				<li><a href="/myweb/get-news!lookNews?newsId=<s:property value="#news.id"/>"><s:property value="#news.title"/></a></li>				

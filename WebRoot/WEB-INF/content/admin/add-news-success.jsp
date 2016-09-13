@@ -33,11 +33,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<s:textfield cssStyle="color:green;width:900px;" key="标题" name="news.title"></s:textfield>
 		<s:textfield cssStyle="color:green;width:900px;" key="作者" name="news.author"></s:textfield>
 		<s:textfield cssStyle="color:green;width:900px;" key="日期" name="news.date"></s:textfield>
-		<s:textfield cssStyle="color:green;width:900px;" key="栏目" name="news.column.name"></s:textfield>
+		
 		<s:textarea cssStyle="color:blue;height:300px;width:900px;" key="内容" name="news.content"></s:textarea>
+		<s:select list="%{columns}" key="栏目" listValue="otherName" listKey="name" name="news.column.name" headerKey="other" headerValue="====选择发布栏目===="></s:select>
+
 		<s:submit key="添加" cssStyle="float:center;"></s:submit>
 	</s:form>  
-		<s:property value="%{add-result}"/>
+	<s:property value="%{#addResult}"/>	
 	<div id="footer" style="background-color: black;color: white;text-align: center;padding-top: 10px;font-size: 20px">
 	<s:debug/>
   	<h1></h1>
