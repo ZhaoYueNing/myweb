@@ -2,14 +2,14 @@ package cn.zhaoyuening.action.admin;
 
 import java.util.List;
 
-import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-
 import cn.zhaoyuening.model.Column;
 import cn.zhaoyuening.model.News;
 import cn.zhaoyuening.service.NewsService;
+import cn.zhaoyuening.utils.MyActionSupport;
 
-public class AddNewsAction extends ActionSupport{
+import com.opensymphony.xwork2.ActionContext;
+
+public class AddNewsAction extends MyActionSupport{
 	//需要保存的news对象，从jsp页面传递过来
 	private News news;
 	//栏目列表
@@ -26,7 +26,6 @@ public class AddNewsAction extends ActionSupport{
 	
 	@Override
 	public String execute() throws Exception {
-		System.out.println(this.getClass().getSimpleName());
 		if (news==null) {			
 			ActionContext.getContext().put(MSG_ADD_RESULT, "请添加消息！");
 			return SUCCESS;

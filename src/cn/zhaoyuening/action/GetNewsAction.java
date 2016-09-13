@@ -3,17 +3,16 @@ package cn.zhaoyuening.action;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 import cn.zhaoyuening.model.Column;
 import cn.zhaoyuening.model.News;
 import cn.zhaoyuening.service.NewsService;
+import cn.zhaoyuening.utils.MyActionSupport;
 /**
  * 获取资讯
  * @author Zhao
  *
  */
-public class GetNewsAction extends ActionSupport {
+public class GetNewsAction extends MyActionSupport {
 	private final static String LOOKNEWS = "looknews"; 
 	private Column column;
 	private NewsService service ;
@@ -31,7 +30,7 @@ public class GetNewsAction extends ActionSupport {
 	//获得资讯列表
 	@Override
 	public String execute() throws Exception {
-		System.out.println(this.getClass().getSimpleName());
+		
 		if (column==null||column.getName()==null) {
 			//选择默认栏目
 			column=Column.getDefalultColumn();
@@ -39,18 +38,15 @@ public class GetNewsAction extends ActionSupport {
 			//获取该栏目的所有资讯
 			newsList = service.getList(column);			
 		}
-		System.out.println(newsList);
 		return super.execute();
 	}
 	//返回文章
 	public String lookNews() throws SQLException{
-		System.out.println("lookNews");
 		news = service.get(this.newsId);
 		if(news==null) {
 			//如果没有该新闻返回首页
 			return SUCCESS;
 		}
-		System.out.println(news);
 		return LOOKNEWS;
 	}
 	

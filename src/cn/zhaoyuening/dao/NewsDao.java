@@ -28,7 +28,7 @@ public class NewsDao {
 		List<News> newsList = new ArrayList<News>();
 		// 数据库连接
 		Connection conn = JdbcUtils.getConnection();
-		String sql = "select * from t_news where columnName=?;";
+		String sql = "select * from t_news where columnName=? order by date desc;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, column.getName());
 		ResultSet set = ps.executeQuery();
@@ -43,7 +43,7 @@ public class NewsDao {
 	public News get(int newsId) throws SQLException{
 		// 数据库连接
 		Connection conn = JdbcUtils.getConnection();
-		String sql = "select * from t_news where id=?;";
+		String sql = "select * from t_news where id=? ;";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, newsId);
 		ResultSet set = ps.executeQuery();
@@ -84,15 +84,6 @@ public class NewsDao {
 		return ps.executeUpdate();
 	}
 	
-	@Test
-	public void testGet() throws Exception {
-		News news = get(3);
-		System.out.println(news);
-	}
-	
-	@Test
-	public void testSave() throws Exception {
-		add(new News());
-	}
+
 
 }
