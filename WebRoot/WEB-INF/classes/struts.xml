@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="true" />
+
+	<!-- 配置常量 -->
+	<constant name="author_name" value="zhao"></constant>
+	<!-- 默认拦截的后缀名 -->
+	<constant name="struts.devMode" value="true"></constant>
+	<!-- 允许动态方法调用! -->
+    <constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+    <!-- 允许静态方法调用 -->
+    <constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+    
+    
+    <package name="default" namespace="/" extends="struts-default">
+    	<default-action-ref name="get-news"></default-action-ref>
+
+ 
+    	 <!-- 
+    	<action name="index" class="cn.zhaoyuening.action.GetNewsAction">
+    		<result>/index.jsp</result>
+    	</action>
+    	  -->
+    	
+    	<action name="get-news" class="cn.zhaoyuening.action.GetNewsAction">
+    		<result name="success">/jsp/index.jsp</result>
+    		<result name="looknews">/WEB-INF/content/looknews.jsp</result>
+    	</action>
+    </package>
+    
+    
+    <package name="admin" extends="default" >
+    	<default-action-ref name="add-news"></default-action-ref>
+    	<action name="add-news" class="cn.zhaoyuening.action.admin.AddNewsAction">
+    		<result name="success">/WEB-INF/content/admin/add-news-success.jsp</result>
+    	</action>
+    </package>
+    
+</struts>
