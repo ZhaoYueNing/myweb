@@ -2,13 +2,27 @@ package cn.zhaoyuening.model;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.ManyToAny;
+
 /**
  * 资讯
  * @author Zhao
  * @table t_news
  *
  */
+@Entity
+@Table(name="t_news")
 public class News {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
 	private String content;
@@ -18,7 +32,9 @@ public class News {
 	//发布的日期
 	private Date date;
 	//所属栏目
+	@ManyToOne(targetEntity=Column.class)
 	private Column column;
+	
 	public News() {}
 	
 	public String getTitle() {
@@ -69,6 +85,20 @@ public class News {
 				+ ", author=" + author + ", date=" + date + ", column="
 				+ column + "]";
 	}
+	/*
+	@javax.persistence.Column(name="columnName")
+	public String getColumnName(){
+		if (column==null) {
+			return null;
+		}
+		return this;
+	}
 	
-	
+	public void setColumnName(String name){
+		if (column==null) {
+			column = new Column();
+		}
+		column.setName(name);
+	}
+	*/
 }

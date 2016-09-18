@@ -32,23 +32,28 @@
 	    color:white;
 	    clear:both;
 	    text-align:center;
-	   padding:5px;	 	 
+	    padding:5px;	 	 
+	}
+	a:link,a:visited{
+		text-decoration:none;  /*超链接无下划线*/
+	}
+	a:hover{
+		text-decoration:underline;  /*鼠标放上去有下划线*/
 	}
 	</style>
 </head>
 <body>
 	<div id="header">
-	<h1>赵岳宁个人站</h1>
+	<h1><a href="/myweb/" style="color:white" class="#">赵岳宁个人站</a></h1>
 	</div>
 	
 	<div id="nav">
 	
 	<s:iterator value="%{columns}" var="c">
 	
-		<a href="/myweb/get-news?column.name=<s:property value="%{#c.name}"/>"><s:property value="%{#c.otherName}"/></a><br>
+		<a href="/myweb/get-news?column.name=<s:property value="%{#c.name}"/>&column.otherName=<s:property value="%{#c.otherName}"/>">
+		<s:property value="%{#c.otherName}"/></a><br>
 	</s:iterator>
-<!-- 	<a href="/myweb/get-news?column.name=test">test</a><br>
-	<a href="/myweb/get-news?column.name=sports">sports</a><br> -->
 
 	</div>
 	

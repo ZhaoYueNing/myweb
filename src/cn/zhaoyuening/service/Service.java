@@ -10,29 +10,22 @@ import java.util.ResourceBundle;
 
 import org.junit.Test;
 
+import cn.zhaoyuening.dao.ColumnDao;
 import cn.zhaoyuening.dao.NewsDao;
 import cn.zhaoyuening.model.Column;
 import cn.zhaoyuening.model.News;
 import cn.zhaoyuening.utils.ToolSet;
 
-public class NewsService {
+public class Service {
 	private static NewsDao dao;
 	//栏目列表
 	private static List<Column> columns;
 	
-	public NewsService() {
+	public Service() {
 		dao = new NewsDao();
+		//如果未获取到栏目列表则查询
 		if (columns == null) {
-			columns = new ArrayList<Column>();
-			ResourceBundle bundle = ResourceBundle.getBundle("column");
-			Enumeration<String> keys = bundle.getKeys();
-			while(keys.hasMoreElements()){
-				String otherName = keys.nextElement();
-				Column column = new Column();
-				column.setOtherName(otherName);
-				column.setName(bundle.getString(otherName));
-				columns.add(column);
-			}
+			Service.columns = new ColumnDao().getColumns();
 		}
 	}
 	public static List<News> getList(Column column) throws SQLException{
@@ -47,8 +40,26 @@ public class NewsService {
 		return columns;
 	}
 	public static void setColumns(List<Column> columns) {
-		NewsService.columns = columns;
+		Service.columns = columns;
 	}
+	/**
+	 * 从column.properties文件中获取所有栏目
+	 * @return 所有栏目的list集合
+	 */
+	public static List<Column> queryColumns(){
+		List<Column> columns = new ArrayList<Column>();
+		ResourceBundle bundle = ResourceBundle.getBundle("column");
+		Enumeration<String> keys = bundle.getKeys();
+		while(keys.hasMoreElements()){
+			String otherName = keys.nextElement();
+			Column column = new Column();
+			column.setOtherName(otherName);
+			column.setName(bundle.getString(otherName));
+			columns.add(column);
+		}
+		return columns;
+	}
+	
 	/**
 	 * 
 	 * @param news
@@ -66,7 +77,7 @@ public class NewsService {
 	
 	@Test
 	public void testName() throws Exception {
-		NewsService service = new NewsService();
+		Service service = new Service();
 		
 	}
 }

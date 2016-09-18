@@ -5,7 +5,7 @@ import java.util.List;
 
 import cn.zhaoyuening.model.Column;
 import cn.zhaoyuening.model.News;
-import cn.zhaoyuening.service.NewsService;
+import cn.zhaoyuening.service.Service;
 import cn.zhaoyuening.utils.MyActionSupport;
 /**
  * 获取资讯
@@ -15,7 +15,7 @@ import cn.zhaoyuening.utils.MyActionSupport;
 public class GetNewsAction extends MyActionSupport {
 	private final static String LOOKNEWS = "looknews"; 
 	private Column column;
-	private NewsService service ;
+	private Service service ;
 	private List<News> newsList;
 	private int newsId;
 	private News news;
@@ -23,7 +23,7 @@ public class GetNewsAction extends MyActionSupport {
 	private List<Column> columns;
 	
 	public GetNewsAction() {
-		service = new NewsService();		
+		service = new Service();		
 		columns = service.getColumns();
 	}
 	
@@ -40,6 +40,7 @@ public class GetNewsAction extends MyActionSupport {
 		}
 		return super.execute();
 	}
+	
 	//返回文章
 	public String lookNews() throws SQLException{
 		news = service.get(this.newsId);

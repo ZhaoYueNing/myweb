@@ -4,7 +4,7 @@ import java.util.List;
 
 import cn.zhaoyuening.model.Column;
 import cn.zhaoyuening.model.News;
-import cn.zhaoyuening.service.NewsService;
+import cn.zhaoyuening.service.Service;
 import cn.zhaoyuening.utils.MyActionSupport;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -16,10 +16,10 @@ public class AddNewsAction extends MyActionSupport{
 	private List<Column> columns;
 	
 	private final String MSG_ADD_RESULT= "addResult";
-	private NewsService service;
+	private Service service;
 
 	public AddNewsAction(){
-		service = new NewsService();
+		service = new Service();
 		columns = service.getColumns();
 	}
 	

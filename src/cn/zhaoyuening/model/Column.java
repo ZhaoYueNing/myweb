@@ -1,7 +1,10 @@
 package cn.zhaoyuening.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
 
 /**
  * 栏目
@@ -9,11 +12,16 @@ import java.util.List;
  * @author Zhao
  * @table t_column type: 个人资讯、个人信息、体育
  */
-public class Column {
+@Entity
+@Table(name="t_column")
+public class Column{
 	//定义默认栏目
 	private static Column defalultColumn;
+	@Id
+	@javax.persistence.Column(name="name")
 	private String name;
 	//别名-显示在jsp页面上
+	@javax.persistence.Column(name="otherName")
 	private String otherName;
 	public Column() {}
 

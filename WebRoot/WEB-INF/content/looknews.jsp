@@ -41,12 +41,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    text-align:center;
 	   padding:5px;	 	 
 	}
+	a:link,a:visited{
+		text-decoration:none;  /*超链接无下划线*/
+	}
+	a:hover{
+		text-decoration:underline;  /*鼠标放上去有下划线*/
+	}
 	</style>
 </head>
 	
 <body>
 	<div id="header">
-	<h1><s:property value="%{news.title}"/></h1>
+	<h1><a href="/myweb/" style="color:white" class="#"><s:property value="%{news.title}"/></a></h1>
 	<a href="/myweb/" style="color:white">回到首页</a>
 	</div>
 <!--	
@@ -60,7 +66,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <font style=" text-align:left">
 	<h5><s:property value="%{news.author}"/> - <s:property value="%{news.date}"/></h5></font><hr />
 	<s:iterator value="%{news.content.split('\n')}" var="p">
-		<p><s:property value="#p"/></p>
+		<p><s:text name="#p"/></p>
 	</s:iterator>
 	<%-- <pre><s:property  value="%{news.content.split('\n')}"/></pre> --%>
 	</div>
