@@ -34,7 +34,7 @@
 		<!-- 可以使用getCurrentSession -->
 		<property name="hibernate.current_session_context_class">thread</property>
 		<!-- 自动提交 -->
-		<!-- <property name="hibernate.connection.autocommit">true</property> -->
+		<property name="hibernate.connection.autocommit">true</property>
 		<!-- 罗列所有持久化类的类名 -->
 		<mapping class="cn.zhaoyuening.model.News"/>
 		<mapping class="cn.zhaoyuening.model.Column"/>
