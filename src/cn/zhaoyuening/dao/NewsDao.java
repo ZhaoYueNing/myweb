@@ -49,7 +49,7 @@ public class NewsDao {
 	//通过咨询id从数据库获取并封装一个news对象
 	public News get(int newsId) throws SQLException{
 		List<News> newsList = new ArrayList<News>();
-		String sql = "from t_news where id='"+newsId+"'";
+		String sql = "from "+News.class.getName()+" where id='"+newsId+"'";
 		Session session = sessionManager.getSession();
 		Transaction transaction = session.beginTransaction();
 		Query query = session.createQuery(sql);

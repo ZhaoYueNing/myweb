@@ -9,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 import org.hibernate.annotations.ManyToAny;
+import org.hibernate.annotations.Type;
 
 /**
  * 资讯
@@ -25,6 +27,7 @@ public class News {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String title;
+	@Type(type="text")  
 	private String content;
 	//作者
 	private String author;
